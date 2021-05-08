@@ -14,10 +14,10 @@ def is_credit_card_valid(number):
     result = sum(num_list)
     if result % 10 == 0:
         print("valid")
-        return result
+        return True
     else:
         print("not valid")
-        return result
+        return False
 
 
-print(is_credit_card_valid(4417123456789113))
+print(is_credit_card_valid(79927398715))
