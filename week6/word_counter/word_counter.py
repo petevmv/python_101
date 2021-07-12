@@ -41,7 +41,11 @@ def word_counter(matrix, word):
     # columns
     # a = matrix[:,2]
     # print(list(reversed(a.tolist()))[0:len(word)])
-
+    for i in range((len(matrix[0,:]))):
+        if word in to_string(matrix[::,i].tolist()):
+            result += 1
+        if word in to_string(list(reversed(matrix[::,i].tolist()))):
+            result += 1
 
 
 
@@ -60,12 +64,11 @@ def word_counter(matrix, word):
     return result
 
 to_string(["z", "v", "a", "n", "q", "h", "r", "e", "z", "g", "t", "z"])
-word = "ivan"
+word = "python"
 matrix = [
-    ["i", "v", "a", "n"],
-    ["e", "v", "n", "h"],
-    ["i", "n", "a", "v"],
-    ["m", "v", "v", "n"],
-    ["q", "r", "i", "t"]
+  ["r", "u", "b", "y"],
+  ["r", "u", "b", "y"],
+  ["r", "u", "b", "y"],
+  ["r", "u", "b", "y"],
 ]
 word_counter(matrix, word)
