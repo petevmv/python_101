@@ -20,22 +20,23 @@ def word_counter(matrix, word):
             result += 1
         # if word in to_string(list(reversed(i))):
         #     print(list(reversed(i)))
-    if word == word[::-1]:
-        result = result//2
 
     # result += diagonals.count(list(word))
 
     # diagonals right to left
     # result += diagonals.count(list(reversed(word)))
 
-
-    # rows left to right
-    result += matrix.tolist().count(list(word))
-    print(result)
+    # rows left to right and right to left
+    # result += matrix.tolist().count(list(word))
+    for i in matrix.tolist():
+        if word in to_string(i):
+            result += 1
+        if word in to_string(list(reversed(i))):
+            result += 1
 
     # rows right to left
-    result += matrix.tolist().count((list(reversed(word))))
-    print(result)
+    # result += matrix.tolist().count((list(reversed(word))))
+    #print(result)
 
     # columns
     # a = matrix[:,2]
@@ -51,20 +52,20 @@ def word_counter(matrix, word):
 
     # for row_index in range(len(matrix)):
     #     for col_index in range(len(matrix[0])):
+    if word == word[::-1]:
+        result = result//2
+
+
     print(result)
     return result
 
 to_string(["z", "v", "a", "n", "q", "h", "r", "e", "z", "g", "t", "z"])
-word = "madam"
+word = "ivan"
 matrix = [
-    ["z", "v", "a", "n", "q", "h", "r", "e", "z", "g", "t", "z"],
-    ["e", "v", "m", "h", "t", "r", "x", "e", "k", "y", "m", "a"],
-    ["i", "a", "c", "a", "u", "a", "l", "l", "y", "a", "c", "x"],
-    ["m", "v", "c", "n", "d", "u", "a", "m", "d", "t", "l", "u"],
-    ["q", "t", "i", "t", "w", "a", "a", "a", "u", "p", "r", "x"],
-    ["p", "e", "m", "a", "d", "a", "m", "l", "l", "y", "w", "p"],
-    ["o", "y", "h", "t", "e", "e", "l", "u", "f", "p", "q", "n"],
-    ["p", "a", "c", "t", "u", "a", "l", "l", "y", "u", "r", "e"]
+    ["i", "v", "a", "n"],
+    ["e", "v", "n", "h"],
+    ["i", "n", "a", "v"],
+    ["m", "v", "v", "n"],
+    ["q", "r", "i", "t"]
 ]
-
 word_counter(matrix, word)
