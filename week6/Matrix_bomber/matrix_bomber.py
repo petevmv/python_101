@@ -17,25 +17,25 @@ def matrix_bombing_plan(m):
                 matrix_copy[1][1] = matrix[1][1] - matrix[0][0]
 
             # Lower left corner
-            if (i, j) == (last_row, 0):
+            elif (i, j) == (last_row, 0):
                 matrix_copy[last_row][1] = matrix[last_row][1] - matrix[last_row][0]
                 matrix_copy[last_row-1][1] = matrix[last_row-1][1] - matrix[last_row][0]
                 matrix_copy[last_row-1][0] = matrix[last_row-1][0] - matrix[last_row][0]
 
             # Upper right corner
-            if (i, j) == (0,last_col):
+            elif (i, j) == (0,last_col):
                 matrix_copy[0][last_col-1] = matrix[0][last_col-1] - matrix[0][last_col]
                 matrix_copy[1][last_col-1] = matrix[1][last_col-1] - matrix[0][last_col]
                 matrix_copy[1][last_col] = matrix[1][last_col] - matrix[0][last_col]
 
             # Lower right corner
-            if (i, j) == (last_row,last_col):
+            elif (i, j) == (last_row,last_col):
                 matrix_copy[last_row][last_col-1] = matrix[last_row][last_col-1] - matrix[last_row][last_col]
                 matrix_copy[last_row-1][last_col-1] = matrix[last_row-1][last_col-1] - matrix[last_row][last_col]
                 matrix_copy[last_row-1][last_col] = matrix[last_row-1][last_col] - matrix[last_row][last_col]
 
             # First row
-            if (i, j) == (0, j) and (i, j) != (0,0) and (i, j) != (0, last_col):
+            elif (i, j) == (0, j) and (i, j) != (0,0) and (i, j) != (0, last_col):
                 matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
                 matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
                 matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
@@ -43,7 +43,7 @@ def matrix_bombing_plan(m):
                 matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
 
             # Last row
-            if (i, j) == (last_row, j) and (i, j) != (last_row,0) and (i, j) != (last_row, last_col):
+            elif (i, j) == (last_row, j) and (i, j) != (last_row,0) and (i, j) != (last_row, last_col):
                     matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
                     matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
                     matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
@@ -51,7 +51,7 @@ def matrix_bombing_plan(m):
                     matrix_copy[i-1][j-1] = matrix[i-1][j-1] - matrix[i][j]
 
             # First col
-            if (i, j) == (i, 0) and (i, j) != (0, 0) and (i, j) != (last_row, 0):
+            elif (i, j) == (i, 0) and (i, j) != (0, 0) and (i, j) != (last_row, 0):
                 matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
                 matrix_copy[i-1][j+1] = matrix[i-1][j+1] - matrix[i][j]
                 matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
@@ -59,13 +59,23 @@ def matrix_bombing_plan(m):
                 matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
 
             # Last col
-            if (i, j) == (i, last_col) and (i, j) != (0, last_col) and (i, j) != (last_row,last_col):
-                print(i,j)
+            elif (i, j) == (i, last_col) and (i, j) != (0, last_col) and (i, j) != (last_row,last_col):
                 matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
                 matrix_copy[i-1][j-1] = matrix[i-1][j-1] - matrix[i][j]
                 matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
                 matrix_copy[i+1][j-1] = matrix[i+1][j-1] - matrix[i][j]
                 matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
+            # Everything in between
+            else:
+                print(i,j)
+                matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
+                matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
+                matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
+                matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
+                matrix_copy[i+1][j-1] = matrix[i+1][j-1] - matrix[i][j]
+                matrix_copy[i-1][j+1] = matrix[i-1][j+1] - matrix[i][j]
+                matrix_copy[i-1][j-1] = matrix[i-1][j-1] - matrix[i][j]
+                matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
 
             matrix_copy[matrix_copy < 0] = 0
             result_dict[i, j] = matrix_copy.sum()
