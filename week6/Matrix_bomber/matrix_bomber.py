@@ -29,13 +29,20 @@ def matrix_bombing_plan(m):
                 matrix_copy[last_row-1][last_col-1] = matrix[last_row-1][last_col-1] - matrix[last_row][last_col]
                 matrix_copy[last_row-1][last_col] = matrix[last_row-1][last_col] - matrix[last_row][last_col]
 
-            if (i, j) == (0, j) and (i,j) != (0,0) and (i,j) != (0,last_col):
-                print(i,j)
+            if (i, j) == (0, j) and (i, j) != (0,0) and (i, j) != (0, last_col):
                 matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
                 matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
                 matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
                 matrix_copy[i+1][j-1] = matrix[i+1][j-1] - matrix[i][j]
                 matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
+
+            if (i, j) == (last_row, j) and (i, j) != (last_row,0) and (i, j) != (last_row, last_col):
+                    print(i,j)
+                    matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
+                    matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
+                    matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
+                    matrix_copy[i-1][j+1] = matrix[i-1][j+1] - matrix[i][j]
+                    matrix_copy[i-1][j-1] = matrix[i-1][j-1] - matrix[i][j]
 
 
             matrix_copy[matrix_copy < 0] = 0
