@@ -52,13 +52,20 @@ def matrix_bombing_plan(m):
 
             # First col
             if (i, j) == (i, 0) and (i, j) != (0, 0) and (i, j) != (last_row, 0):
-                print(i,j)
                 matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
                 matrix_copy[i-1][j+1] = matrix[i-1][j+1] - matrix[i][j]
                 matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
                 matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
                 matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
 
+            # Last col
+            if (i, j) == (i, last_col) and (i, j) != (0, last_col) and (i, j) != (last_row,last_col):
+                print(i,j)
+                matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
+                matrix_copy[i-1][j-1] = matrix[i-1][j-1] - matrix[i][j]
+                matrix_copy[i-1][j] = matrix[i-1][j] - matrix[i][j]
+                matrix_copy[i+1][j-1] = matrix[i+1][j-1] - matrix[i][j]
+                matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
 
             matrix_copy[matrix_copy < 0] = 0
             result_dict[i, j] = matrix_copy.sum()
