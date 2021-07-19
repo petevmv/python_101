@@ -20,22 +20,26 @@ def matrix_bombing_plan(m):
                 matrix_copy[last_row-1][0] = matrix[last_row-1][0] - matrix[last_row][0]
 
             if (i, j) == (0,last_col):
-                print(i,j)
                 matrix_copy[0][last_col-1] = matrix[0][last_col-1] - matrix[0][last_col]
                 matrix_copy[1][last_col-1] = matrix[1][last_col-1] - matrix[0][last_col]
                 matrix_copy[1][last_col] = matrix[1][last_col] - matrix[0][last_col]
 
             if (i, j) == (last_row,last_col):
-                print(last_row,last_col)
                 matrix_copy[last_row][last_col-1] = matrix[last_row][last_col-1] - matrix[last_row][last_col]
                 matrix_copy[last_row-1][last_col-1] = matrix[last_row-1][last_col-1] - matrix[last_row][last_col]
                 matrix_copy[last_row-1][last_col] = matrix[last_row-1][last_col] - matrix[last_row][last_col]
 
+            if (i, j) == (0, j) and (i,j) != (0,0) and (i,j) != (0,last_col):
+                print(i,j)
+                matrix_copy[i][j-1] = matrix[i][j-1] - matrix[i][j]
+                matrix_copy[i][j+1] = matrix[i][j+1] - matrix[i][j]
+                matrix_copy[i+1][j] = matrix[i+1][j] - matrix[i][j]
+                matrix_copy[i+1][j-1] = matrix[i+1][j-1] - matrix[i][j]
+                matrix_copy[i+1][j+1] = matrix[i+1][j+1] - matrix[i][j]
+
+
             matrix_copy[matrix_copy < 0] = 0
             result_dict[i, j] = matrix_copy.sum()
-
-
-
 
     print(matrix_copy)
     print(result_dict)
