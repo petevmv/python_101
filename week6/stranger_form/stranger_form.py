@@ -1,36 +1,11 @@
-import numpy as np
-friends_configuration = ["A", "BAA", "FRA", "CAB", "DRC", "EAD", "GLE"]
+from copy import deepcopy
+
 MOVMENTS = {
-            'A': (-1, 0),
-            'B': (1, 0),
-            'R': (0, 1),
-            'L': (0,-1)
-            }
-# {
-#     'A':(0, 0)
-#     'B':(-1, 0)
-#     'F':(0, 1)
-#     'C':(-2, 0)
-#     'D':(-2, 1)
-#     'E':(-3, 1)
-#     'G':(-3, -1)
-# }
-def build_friends_layouot(friends_configuration):
-    relative_position = {}
-    for configuration in friends_configuration:
-        relative_position[configuration[0]] = (0, 0)
-
-    for configuration in friends_configuration:
-        if len(configuration) == 1:
-            continue
-        name, position, relative_to = configuration
-        relative_x, relative_y = relative_position[relative_to]
-        x, y = MOVMENTS[position]
-        relative_position[name] = (relative_x + x, relative_y + y)
-    return relative_position
-
-build_friends_layouot(friends_configuration)
-
+    'A':(-1, 0),
+    'B':(1, 0),
+    'L':(0, -1),
+    'R':(0, 1)
+}
 def outside_of_bounds(point, matrix):
     x, y = point
 
@@ -43,28 +18,108 @@ def outside_of_bounds(point, matrix):
     return x < MIN_X or x > MAX_X or y < MIN_Y or y > MAX_Y
 
 
-def stranger_forms(cinema_layout, friends_configuration):
-    central = friends_configuration[0]
-    for config in friends_configuration[1:]:
-        name, position, related_to = config
+
+def add_point(p, q):
+    px, qx = p
+    py, qy = q
+    return (px + py, qx + qy)
 
 
-    for i in range(len(cinema_layout)):
-        for j in range(len(cinema_layout[0])):
-            if cinema_layout[i][j] == '*':
+def print_layout(configuration, layout):
+    layout = deepcopy([list(row) for row in layout])
+    for name, point in configuration.items():
+        x, y = point
+        layout[x][y] = name
+    for row in layout:
+        print(''.join(row))
+
+
+def build_layout(configuration, layout):
+    layout = deepcopy([list(row) for row in layout])
+    for name, point in configuration.items():
+        x, y = point
+        layout[x][y] = name
+
+    new_layout = []
+    for row in layout:
+        new_layout.append(''.join(row))
+
+    return new_layout
+
+
+def in_cinema(point, cinema_layout):
+    x, y = point
+
+    return (# short-circuit (when python enterpreter sees "and"
+    # and evaluates the first condition as False it does not evaluate any further)
+        not outside_of_bounds(point, cinema_layout)
+        and cinema_layout[x][y] == '.'
+    )
+
+
+def build_friends_relative_position(friends_configuration):
+    relative_position = {}
+
+    for configuration in friends_configuration:
+        relative_position[configuration[0]] = (0,0)
+
+    for configuration in friends_configuration:
+        if len(configuration) == 1:
+            continue
+
+        name, position, relative_to = configuration
+
+        x, y = MOVMENTS[position]
+
+        relative_x, relative_y = relative_position[relative_to]
+
+        relative_position[name] = (relative_x + x, relative_y + y)
+
+    return relative_position
+
+
+def stranger_form(cinema_layout, friends_configuration):
+    result = []
+    friends_relative_position = build_friends_relative_position(friends_configuration)
+    for x in range(len(cinema_layout)):
+        for y in range(len(cinema_layout[0])):
+            if cinema_layout[x][y] == '*':
                 continue
 
+            friends_current_possition = {
+                name:add_point((x,y), point)
+                for name, point in friends_relative_position.items()
+            }
+            all_points_in = True
+
+            for point in friends_current_possition.values():
+                if not in_cinema(point, cinema_layout):
+                    all_points_in = False
+                    break
 
 
-cinema_layout = ['..*...*.**',
-                 '.....**...',
-                 '*.*...*..*',
-                 '.**....*.*',
-                 '...*..*.*.',
-                 '.***...*..',
-                 '*......*.*',
-                 '.....**..*',
-                 '..*.*.*..*',
-                 '***.*.**..']
+            if all_points_in:
+                print_layout(friends_current_possition, cinema_layout)
+                result.append(
+                    build_layout(
+                        friends_current_possition,
+                        cinema_layout
+                        )
+                )
+    return result
 
-stranger_forms(cinema_layout, friends_configuration)
+cinema_layout = [
+    '..*...*.**',
+    '.....**...',
+    '*.*...*..*',
+    '.**....*.*',
+    '...*..*.*.',
+    '.***...*..',
+    '*......*.*',
+    '.....**..*',
+    '..*.*.*..*',
+    '***.*.**..'
+]
+
+friends_configuration = ["A", "BAA", "FRA", "CAB", "DRC", "EAD", "GLE"]
+stranger_form(cinema_layout, friends_configuration)
