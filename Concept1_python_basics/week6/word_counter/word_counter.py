@@ -34,6 +34,7 @@ def word_counter(matrix, word):
             result += 1
         if word in to_string(list(reversed(matrix[::,i].tolist()))):
             result += 1
+
     # anagram check
     if word == word[::-1]:
         result = result//2
@@ -41,26 +42,26 @@ def word_counter(matrix, word):
 
     print(result)
     return result
-word = "ivan"
-matrix = [
-    ["i", "v", "a", "n"],
-    ["e", "v", "n", "h"],
-    ["i", "n", "a", "v"],
-    ["m", "v", "v", "n"],
-    ["q", "r", "i", "t"]
-]
-#
-# word = "actually"
+# word = "ivan"
 # matrix = [
-#     ["i", "v", "a", "n", "q", "h", "r", "e", "z", "g", "t", "z", "o", "y", "m"],
-#     ["e", "v", "n", "h", "t", "r", "x", "e", "k", "y", "d", "a", "i", "l", "c"],
-#     ["i", "a", "c", "t", "u", "a", "l", "l", "y", "m", "c", "x", "r", "l", "e"],
-#     ["m", "v", "c", "n", "p", "u", "a", "m", "n", "t", "l", "u", "e", "a", "a"],
-#     ["q", "r", "i", "t", "w", "e", "a", "q", "u", "p", "r", "x", "t", "u", "z"],
-#     ["p", "e", "a", "c", "t", "u", "a", "l", "l", "y", "w", "p", "y", "t", "m"],
-#     ["o", "y", "h", "t", "r", "e", "l", "u", "f", "p", "q", "n", "z", "c", "s"],
-#     ["p", "a", "c", "t", "u", "a", "l", "l", "y", "u", "r", "e", "q", "a", "r"]
+#     ["i", "v", "a", "n"],
+#     ["e", "v", "n", "h"],
+#     ["i", "n", "a", "v"],
+#     ["m", "v", "v", "n"],
+#     ["q", "r", "i", "t"]
 # ]
+#
+word = "actually"
+matrix = [
+    ["i", "v", "a", "n", "q", "h", "r", "e", "z", "g", "t", "z", "o", "y", "m"],
+    ["e", "v", "n", "h", "t", "r", "x", "e", "k", "y", "d", "a", "i", "l", "c"],
+    ["i", "a", "c", "t", "u", "a", "l", "l", "y", "m", "c", "x", "r", "l", "e"],
+    ["m", "v", "c", "n", "p", "u", "a", "m", "n", "t", "l", "u", "e", "a", "a"],
+    ["q", "r", "i", "t", "w", "e", "a", "q", "u", "p", "r", "x", "t", "u", "z"],
+    ["p", "e", "a", "c", "t", "u", "a", "l", "l", "y", "w", "p", "y", "t", "m"],
+    ["o", "y", "h", "t", "r", "e", "l", "u", "f", "p", "q", "n", "z", "c", "s"],
+    ["p", "a", "c", "t", "u", "a", "l", "l", "y", "u", "r", "e", "q", "a", "r"]
+]
 #
 # word = "madam"
 # matrix = [

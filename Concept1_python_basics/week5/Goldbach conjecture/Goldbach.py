@@ -37,6 +37,7 @@ def goldbach(n):
             if i + j == n:
                 if (j, i) not in res:
                     res.append((i,j))
+    print(res)
     return res
 
-goldbach(100)
+goldbach(40)
