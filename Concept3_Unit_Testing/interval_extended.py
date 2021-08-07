@@ -1,5 +1,6 @@
 class Interval:
     def __init__(self, start, end, start_opened=False, end_opened=False):
+        test = start
         # This is the constructor
         pass
 
