@@ -28,7 +28,7 @@ closed_interval.is_inside(1) is True
 closed_interval.is_inside(5) is True
 closed_interval.is_inside(10) is True
 
-closed_interval.stringify() == "[1, 10]
+closed_interval.stringify() == "[1, 10]"
 ```
 
 and
