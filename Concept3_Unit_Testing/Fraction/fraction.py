@@ -13,7 +13,6 @@ class Fraction:
             self.value = self.numerator/self.denominator
         
 
-
     def __str__(self):
         """
         Returns the string representation of self.
@@ -23,11 +22,13 @@ class Fraction:
 
         return f"{self.numerator}{'/'}{self.denominator}"
 
+
     def __repr__(self):
         """
         Returns the REPL representation of self.
         """
         return f"{self.__class__.__name__}{self.numerator, self.denominator}"
+
 
     def __eq__(self, other):
         """
@@ -38,6 +39,7 @@ class Fraction:
         else:
             return False
           
+
     def __add__(self, other):
         """
         Returns new Fraction, that's the sum of self and other.
@@ -50,10 +52,6 @@ class Fraction:
             other.new_numerator = (nok // other.denominator) * other.numerator
             return Fraction(self.new_numerator + other.new_numerator, nok) 
                 
-
-
-
-
 
     def __sub__(self, other):
         """
@@ -74,15 +72,24 @@ class Fraction:
         return Fraction(self.numerator * other.numerator, 
                         self.denominator * other.denominator)
         
-        
+    def get_divider(a, b):
+        num_list = []
+        for num in range(2, min(abs(a), abs(b)) + 1):
+            if a % num == 0 and b % num == 0:
+                num_list.append(num)
+        if num_list:
+            return max(num_list)
+        else:
+            return 1
+
+
     def simplify(self):
         """
         Returns new Fraction, that's the simplification of self
         """
-        if self.numerator % self.denominator == 0 or self.denominator % self.numerator == 0:
-            divider = min(self.numerator, self.denominator)
-            return Fraction(self.numerator // divider, self.denominator // divider)
-        
+        divider = Fraction.get_divider(self.numerator, self.denominator)
+        return Fraction(self.numerator // divider, self.denominator// divider)
+
 
     def is_simplified(self):
         """
@@ -96,18 +103,32 @@ class Fraction:
 
 a = Fraction(1, 2)
 b = Fraction(1, 2)
-# print(a)
-# print('repr', repr(a))
-print(a == b)
+
+print(a == b)  # True
+
+print(a)  # 1/2
+print(b)  # 1/2
+
 c = a + b
 
-# print(c.simplify())
-# print(c)
-# print(c.is_simplified()) 
-# print(c.simplify().is_simplified())
+print(a)  # 1/2
+print(b)  # 1/2
+print(c)  # 2/2
+
+print(c.simplify())  # 1/1
+print(c)  # 2/2
+
+print(c.is_simplified())  # False
+print(c.simplify().is_simplified())  # True
 
 d = a - b
 print(d)  # 0
 print(d.simplify())  # 0
 print(d.is_simplified())  # True
+
+e = a * b
+print(e)  # 1/4
+print(e.simplify())  # 1/4
+print(e.is_simplified())  # True
+
 
