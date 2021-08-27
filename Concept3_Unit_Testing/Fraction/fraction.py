@@ -8,7 +8,7 @@ class Fraction:
         self.numerator = numerator
         self.denominator = denominator
         if self.denominator == 0:
-            raise ValueError
+            raise ValueError('Cannot divide by zero')
         else:
             self.value = self.numerator/self.denominator
         
@@ -27,6 +27,8 @@ class Fraction:
         """
         Returns the REPL representation of self.
         """
+        if self.numerator == 0:
+            return f"{self.__class__.__name__}{0}"
         return f"{self.__class__.__name__}{self.numerator, self.denominator}"
 
 
@@ -130,5 +132,4 @@ e = a * b
 print(e)  # 1/4
 print(e.simplify())  # 1/4
 print(e.is_simplified())  # True
-
 
