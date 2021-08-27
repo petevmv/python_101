@@ -73,6 +73,12 @@ class Fraction:
         """
         return Fraction(self.numerator * other.numerator, 
                         self.denominator * other.denominator)
+
+
+    def __lt__(self, other):
+        
+        return self.value < other.value 
+
         
     def get_divider(a, b):
         num_list = []
@@ -83,6 +89,7 @@ class Fraction:
             return max(num_list)
         else:
             return 1
+
 
 
     def simplify(self):
@@ -106,30 +113,31 @@ class Fraction:
 a = Fraction(1, 2)
 b = Fraction(1, 2)
 
-print(a == b)  # True
+# print(a == b)  # True
 
-print(a)  # 1/2
-print(b)  # 1/2
+# print(a)  # 1/2
+# print(b)  # 1/2
 
-c = a + b
+# c = a + b
 
-print(a)  # 1/2
-print(b)  # 1/2
-print(c)  # 2/2
+# print(a)  # 1/2
+# print(b)  # 1/2
+# print(c)  # 2/2
 
-print(c.simplify())  # 1/1
-print(c)  # 2/2
+# print(c.simplify())  # 1/1
+# print(c)  # 2/2
 
-print(c.is_simplified())  # False
-print(c.simplify().is_simplified())  # True
+# print(c.is_simplified())  # False
+# print(c.simplify().is_simplified())  # True
 
-d = a - b
-print(d)  # 0
-print(d.simplify())  # 0
-print(d.is_simplified())  # True
+# d = a - b
+# print(d)  # 0
+# print(d.simplify())  # 0
+# print(d.is_simplified())  # True
 
-e = a * b
-print(e)  # 1/4
-print(e.simplify())  # 1/4
-print(e.is_simplified())  # True
+# e = a * b
+# print(e)  # 1/4
+# print(e.simplify())  # 1/4
+# print(e.is_simplified())  # True
 
+print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
