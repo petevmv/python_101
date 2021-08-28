@@ -13,6 +13,9 @@ class FractionTest(unittest.TestCase):
 		self.assertEqual(zero.__str__(), str(zero))
 		self.assertEqual(zero.__repr__(), repr(zero))
 
+		with self.assertRaises(ValueError):
+			Fraction(1, 0)
+
 	def test_add_sub_and_mul(self):
 		a = Fraction(1, 2)
 		b = Fraction(1, 2)
