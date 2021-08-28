@@ -9,6 +9,10 @@ class Fraction:
         self.denominator = denominator
         if self.denominator == 0:
             raise ValueError('Cannot divide by zero')
+        
+        elif type(self.numerator) != int or type(self.denominator) != int:
+            raise TypeError
+
         else:
             self.value = self.numerator/self.denominator
         
@@ -139,5 +143,4 @@ b = Fraction(1, 2)
 # print(e)  # 1/4
 # print(e.simplify())  # 1/4
 # print(e.is_simplified())  # True
-
 print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))

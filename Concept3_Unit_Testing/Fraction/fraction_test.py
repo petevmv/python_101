@@ -3,6 +3,20 @@ from fraction import Fraction
 
 class FractionTest(unittest.TestCase):
 
+	def test_init(self):
+		with self.assertRaises(ValueError):
+			Fraction(1, 0)
+
+		with self.assertRaises(TypeError):
+			Fraction('str', 1)
+
+		with self.assertRaises(TypeError):
+			Fraction(1, 'str')
+
+		with self.assertRaises(TypeError):
+			Fraction()
+
+
 	def test_string_repr_and_zero(self):
 		test = Fraction(1, 2)
 		zero = Fraction(0, 1)
@@ -13,8 +27,7 @@ class FractionTest(unittest.TestCase):
 		self.assertEqual(zero.__str__(), str(zero))
 		self.assertEqual(zero.__repr__(), repr(zero))
 
-		with self.assertRaises(ValueError):
-			Fraction(1, 0)
+		
 
 	def test_add_sub_and_mul(self):
 		a = Fraction(1, 2)
