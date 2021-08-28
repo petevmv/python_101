@@ -50,9 +50,11 @@ class FractionTest(unittest.TestCase):
 	def test_simplyfy_produce_correct_result(self):
 		test1 = Fraction(10, 20)
 		test2 = Fraction(4, 4)
+		test3 = Fraction(1, 3)
 
 		self.assertEqual(test1.simplify(), Fraction(1, 2))
 		self.assertEqual(test2.simplify(), Fraction(1, 1))
+		self.assertEqual(test3.simplify(), Fraction(1, 3))
 
 	def test_is_simplyfied_produce_correct_result(self):
 		test1 = Fraction(10, 20)
@@ -61,6 +63,10 @@ class FractionTest(unittest.TestCase):
 		self.assertFalse(test1.is_simplified())
 		self.assertTrue(test2.is_simplified())
 		self.assertTrue(test1.simplify().is_simplified())
+
+	def test_get_divider(self):
+		self.assertEqual(Fraction.get_divider(2, 4), 2)
+		self.assertEqual(Fraction.get_divider(3, 5), 1)
 
 
 
