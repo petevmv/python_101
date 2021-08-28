@@ -18,14 +18,11 @@ class FractionTest(unittest.TestCase):
 
 
 	def test_string_repr_and_zero(self):
-		test = Fraction(1, 2)
-		zero = Fraction(0, 1)
-
-		self.assertEqual(test.__str__(), str(test))
-		self.assertEqual(test.__repr__(), repr(test))
+		self.assertEqual(Fraction(1, 2).__str__(), str(Fraction(1, 2)))
+		self.assertEqual(Fraction(1, 2).__repr__(), repr(Fraction(1, 2)))
 		
-		self.assertEqual(zero.__str__(), str(zero))
-		self.assertEqual(zero.__repr__(), repr(zero))
+		self.assertEqual(Fraction(0, 1).__str__(), str(Fraction(0, 1)))
+		self.assertEqual(Fraction(0, 1).__repr__(), repr(Fraction(0, 1)))
 
 		
 
@@ -39,30 +36,22 @@ class FractionTest(unittest.TestCase):
 
 	
 	def test_eq(self):
-		a = Fraction(1, 2)
-		b = Fraction(1, 2)
-		c = Fraction(1, 3)
+		self.assertEqual(Fraction(1, 2), Fraction(1, 2))
+		self.assertNotEqual(Fraction(1, 2), Fraction(1, 61))
 
-		self.assertEqual(a, b)
-		self.assertNotEqual(a, c)
+	def test_lt(self):
+		self.assertTrue(Fraction(1, 2) < Fraction(3, 4))
 
 
 	def test_simplyfy_produce_correct_result(self):
-		test1 = Fraction(10, 20)
-		test2 = Fraction(4, 4)
-		test3 = Fraction(1, 3)
-
-		self.assertEqual(test1.simplify(), Fraction(1, 2))
-		self.assertEqual(test2.simplify(), Fraction(1, 1))
-		self.assertEqual(test3.simplify(), Fraction(1, 3))
+		self.assertEqual(Fraction(10, 20).simplify(), Fraction(1, 2))
+		self.assertEqual(Fraction(4, 4).simplify(), Fraction(1, 1))
+		self.assertEqual(Fraction(1, 3).simplify(), Fraction(1, 3))
 
 	def test_is_simplyfied_produce_correct_result(self):
-		test1 = Fraction(10, 20)
-		test2 = Fraction(1 , 2)
-		
-		self.assertFalse(test1.is_simplified())
-		self.assertTrue(test2.is_simplified())
-		self.assertTrue(test1.simplify().is_simplified())
+		self.assertFalse(Fraction(10, 20).is_simplified())
+		self.assertTrue(Fraction(1, 2).is_simplified())
+		self.assertTrue(Fraction(1, 2).simplify().is_simplified())
 
 	def test_get_divider(self):
 		self.assertEqual(Fraction.get_divider(2, 4), 2)
