@@ -55,7 +55,7 @@ class Fraction:
         if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
             nok = max(self.denominator, other.denominator)    
         else:
-            nok = self.denominator * other.denominator
+            nok = Fraction.get_nok(self.denominator, other.denominator)
         
         self.new_numerator = (nok // self.denominator) * self.numerator 
         other.new_numerator = (nok // other.denominator) * other.numerator
@@ -71,7 +71,7 @@ class Fraction:
         if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
             nok = max(self.denominator, other.denominator)
         else:
-            nok = self.denominator * other.denominator
+            nok = Fraction.get_nok(self.denominator, other.denominator)
         
         self.new_numerator = (nok // self.denominator) * self.numerator 
         other.new_numerator = (nok // other.denominator) * other.numerator
@@ -89,7 +89,17 @@ class Fraction:
         
         return self.value < other.value 
 
+    
+    def get_nok(a, b):
+        counter = max(abs(a), abs(b)) + 1
+        while (counter % max(abs(a), abs(b)) != 0):
+            counter += 1
         
+        if counter % min(abs(a), abs(b)) == 0:
+            return counter 
+        else:
+            return a * b
+
     def get_divider(a, b):
         num_list = []
         for num in range(2, min(abs(a), abs(b)) + 1):
@@ -120,8 +130,8 @@ class Fraction:
         else:
             return False
 
-a = Fraction(1, 3)
-b = Fraction(1, 45)
+a = Fraction(1, 7)
+b = Fraction(1, 6)
 
 # print(a == b)  # True
 
