@@ -52,12 +52,15 @@ class Fraction:
         """
         if self.denominator == other.denominator:
             return Fraction(self.numerator + other.numerator, self.denominator)
+        if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
+            nok = max(self.denominator, other.denominator)    
         else:
             nok = self.denominator * other.denominator
-            self.new_numerator = (nok // self.denominator) * self.numerator 
-            other.new_numerator = (nok // other.denominator) * other.numerator
-            return Fraction(self.new_numerator + other.new_numerator, nok) 
-                
+        
+        self.new_numerator = (nok // self.denominator) * self.numerator 
+        other.new_numerator = (nok // other.denominator) * other.numerator
+        return Fraction(self.new_numerator + other.new_numerator, nok) 
+            
 
     def __sub__(self, other):
         """
@@ -65,11 +68,14 @@ class Fraction:
         """
         if self.denominator == other.denominator:
             return Fraction(self.numerator - other.numerator, self.denominator)
+        if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
+            nok = max(self.denominator, other.denominator)
         else:
             nok = self.denominator * other.denominator
-            self.new_numerator = (nok // self.denominator) * self.numerator 
-            other.new_numerator = (nok // other.denominator) * other.numerator
-            return Fraction(self.new_numerator - other.new_numerator, nok) 
+        
+        self.new_numerator = (nok // self.denominator) * self.numerator 
+        other.new_numerator = (nok // other.denominator) * other.numerator
+        return Fraction(self.new_numerator - other.new_numerator, nok) 
 
     def __mul__(self, other):
         """
@@ -114,8 +120,8 @@ class Fraction:
         else:
             return False
 
-a = Fraction(1, 2)
-b = Fraction(1, 2)
+a = Fraction(1, 3)
+b = Fraction(1, 45)
 
 # print(a == b)  # True
 
@@ -143,4 +149,5 @@ b = Fraction(1, 2)
 # print(e)  # 1/4
 # print(e.simplify())  # 1/4
 # print(e.is_simplified())  # True
-print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
+# print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
+print(a + b)
