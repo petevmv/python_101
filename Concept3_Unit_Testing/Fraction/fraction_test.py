@@ -38,6 +38,7 @@ class FractionTest(unittest.TestCase):
 	def test_eq(self):
 		self.assertEqual(Fraction(1, 2), Fraction(1, 2))
 		self.assertNotEqual(Fraction(1, 2), Fraction(1, 61))
+		self.assertTrue(Fraction(1, 2) == Fraction(1, 2).simplify())
 
 	def test_lt(self):
 		self.assertTrue(Fraction(1, 2) < Fraction(3, 4))
