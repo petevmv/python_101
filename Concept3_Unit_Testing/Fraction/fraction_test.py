@@ -57,6 +57,11 @@ class FractionTest(unittest.TestCase):
 		self.assertEqual(Fraction.get_divider(2, 4), 2)
 		self.assertEqual(Fraction.get_divider(3, 5), 1)
 
+	def test_get_nok(self):
+		self.assertEqual(Fraction.get_nok(12, 18), 36)
+		self.assertEqual(Fraction.get_nok(6, 6), 6)
+		self.assertEqual(Fraction.get_nok(7, 8), 56)
+		self.assertEqual(Fraction.get_nok(6, 12), 12)
 
 
 if __name__ == "__main__":

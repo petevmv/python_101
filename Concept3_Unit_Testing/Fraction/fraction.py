@@ -33,6 +33,7 @@ class Fraction:
         """
         if self.numerator == 0:
             return f"{self.__class__.__name__}{0}"
+        
         return f"{self.__class__.__name__}{self.numerator, self.denominator}"
 
 
@@ -42,8 +43,8 @@ class Fraction:
         """
         if self.numerator == other.numerator and self.denominator == other.denominator:
             return True
-        else:
-            return False
+        
+        return False
           
 
     def __add__(self, other):
@@ -52,11 +53,8 @@ class Fraction:
         """
         if self.denominator == other.denominator:
             return Fraction(self.numerator + other.numerator, self.denominator)
-        if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
-            nok = max(self.denominator, other.denominator)    
-        else:
-            nok = Fraction.get_nok(self.denominator, other.denominator)
         
+        nok = Fraction.get_nok(abs(self.denominator), abs(other.denominator))
         self.new_numerator = (nok // self.denominator) * self.numerator 
         other.new_numerator = (nok // other.denominator) * other.numerator
         return Fraction(self.new_numerator + other.new_numerator, nok) 
@@ -68,11 +66,8 @@ class Fraction:
         """
         if self.denominator == other.denominator:
             return Fraction(self.numerator - other.numerator, self.denominator)
-        if self.denominator % other.denominator == 0 or other.denominator % self.denominator == 0:
-            nok = max(self.denominator, other.denominator)
-        else:
-            nok = Fraction.get_nok(self.denominator, other.denominator)
         
+        nok = Fraction.get_nok(abs(self.denominator), abs(other.denominator))
         self.new_numerator = (nok // self.denominator) * self.numerator 
         other.new_numerator = (nok // other.denominator) * other.numerator
         return Fraction(self.new_numerator - other.new_numerator, nok) 
@@ -91,12 +86,15 @@ class Fraction:
 
     
     def get_nok(a, b):
-        counter = max(abs(a), abs(b)) + 1
-        while (counter % max(abs(a), abs(b)) != 0):
+        if a % b == 0 or b % a == 0:
+            return max(a, b)
+
+        counter = max(a, b) + 1
+        while (counter % max(a, b) != 0):
             counter += 1
         
-        if counter % min(abs(a), abs(b)) == 0:
-            return counter 
+        if counter % min(a, b) == 0:
+            return counter
         else:
             return a * b
 
@@ -130,34 +128,34 @@ class Fraction:
         else:
             return False
 
-a = Fraction(1, 7)
-b = Fraction(1, 6)
+a = Fraction(1, 2)
+b = Fraction(1, 2)
 
-# print(a == b)  # True
+print(a == b)  # True
 
-# print(a)  # 1/2
-# print(b)  # 1/2
+print(a)  # 1/2
+print(b)  # 1/2
 
-# c = a + b
+c = a + b
 
-# print(a)  # 1/2
-# print(b)  # 1/2
-# print(c)  # 2/2
+print(a)  # 1/2
+print(b)  # 1/2
+print(c)  # 2/2
 
-# print(c.simplify())  # 1/1
-# print(c)  # 2/2
+print(c.simplify())  # 1/1
+print(c)  # 2/2
 
-# print(c.is_simplified())  # False
-# print(c.simplify().is_simplified())  # True
+print(c.is_simplified())  # False
+print(c.simplify().is_simplified())  # True
 
-# d = a - b
-# print(d)  # 0
-# print(d.simplify())  # 0
-# print(d.is_simplified())  # True
+d = a - b
+print(d)  # 0
+print(d.simplify())  # 0
+print(d.is_simplified())  # True
 
-# e = a * b
-# print(e)  # 1/4
-# print(e.simplify())  # 1/4
-# print(e.is_simplified())  # True
-# print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
+e = a * b
+print(e)  # 1/4
+print(e.simplify())  # 1/4
+print(e.is_simplified())  # True
+print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
 print(a + b)
