@@ -30,15 +30,14 @@ class FractionTest(unittest.TestCase):
 		a = Fraction(1, 2)
 		b = Fraction(1, 2)
 
-		self.assertEqual(a + b, Fraction(2, 2))
+		self.assertEqual(a + b, Fraction(2, 2))	
 		self.assertEqual(a - b, Fraction(0, 2))
 		self.assertEqual(a * b, Fraction(1, 4))
-
 	
 	def test_eq(self):
 		self.assertEqual(Fraction(1, 2), Fraction(1, 2))
 		self.assertNotEqual(Fraction(1, 2), Fraction(1, 61))
-		self.assertTrue(Fraction(1, 2) == Fraction(1, 2).simplify())
+		self.assertEqual(Fraction(1, 2), Fraction(1, 2).simplify())
 
 	def test_lt(self):
 		self.assertTrue(Fraction(1, 2) < Fraction(3, 4))

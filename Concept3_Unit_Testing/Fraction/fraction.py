@@ -81,7 +81,6 @@ class Fraction:
 
 
     def __lt__(self, other):
-        
         return self.value < other.value 
 
     
@@ -107,7 +106,6 @@ class Fraction:
             return max(num_list)
         else:
             return 1
-
 
 
     def simplify(self):
@@ -158,4 +156,4 @@ print(e)  # 1/4
 print(e.simplify())  # 1/4
 print(e.is_simplified())  # True
 print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
-print(a + b)
+
