@@ -18,11 +18,11 @@ class FractionTest(unittest.TestCase):
 
 
 	def test_string_repr_and_zero(self):
-		self.assertEqual(Fraction(1, 2).__str__(), str(Fraction(1, 2)))
-		self.assertEqual(Fraction(1, 2).__repr__(), repr(Fraction(1, 2)))
+		self.assertEqual(str(Fraction(1, 2)), '1/2')
+		self.assertEqual(repr(Fraction(1, 2)), 'Fraction(1, 2)')
 		
-		self.assertEqual(Fraction(0, 1).__str__(), str(Fraction(0, 1)))
-		self.assertEqual(Fraction(0, 1).__repr__(), repr(Fraction(0, 1)))
+		self.assertEqual(str(Fraction(0, 1)), '0')
+		self.assertEqual(repr(Fraction(0, 1)), '0')
 
 		
 

@@ -10,8 +10,8 @@ class Fraction:
         if self.denominator == 0:
             raise ValueError('Cannot divide by zero')
         
-        elif type(self.numerator) != int or type(self.denominator) != int:
-            raise TypeError
+        # elif type(self.numerator) != int or type(self.denominator) != int:
+        #     raise TypeError
 
         else:
             self.value = self.numerator/self.denominator
@@ -24,7 +24,7 @@ class Fraction:
         if self.numerator == 0:
             return '0'
 
-        return f"{self.numerator}{'/'}{self.denominator}"
+        return f"{self.numerator}/{self.denominator}"
 
 
     def __repr__(self):
@@ -32,12 +32,12 @@ class Fraction:
         Returns the REPL representation of self.
         """
         if self.numerator == 0:
-            return f"{self.__class__.__name__}{0}"
+            return '0'
         
         return f"{self.__class__.__name__}{self.numerator, self.denominator}"
 
 
-    def __eq__(self, other):
+    def __eq__(self, other):    
         """
         Returns True/False, if self is equal to other.
         """
@@ -55,9 +55,9 @@ class Fraction:
             return Fraction(self.numerator + other.numerator, self.denominator)
         
         nok = Fraction.get_nok(abs(self.denominator), abs(other.denominator))
-        self.new_numerator = (nok // self.denominator) * self.numerator 
-        other.new_numerator = (nok // other.denominator) * other.numerator
-        return Fraction(self.new_numerator + other.new_numerator, nok) 
+        new_numerator = (nok // self.denominator) * self.numerator 
+        other_new_numerator = (nok // other.denominator) * other.numerator
+        return Fraction(new_numerator + other_new_numerator, nok) 
             
 
     def __sub__(self, other):
@@ -68,10 +68,11 @@ class Fraction:
             return Fraction(self.numerator - other.numerator, self.denominator)
         
         nok = Fraction.get_nok(abs(self.denominator), abs(other.denominator))
-        self.new_numerator = (nok // self.denominator) * self.numerator 
-        other.new_numerator = (nok // other.denominator) * other.numerator
-        return Fraction(self.new_numerator - other.new_numerator, nok) 
+        new_numerator = (nok // self.denominator) * self.numerator 
+        other_new_numerator = (nok // other.denominator) * other.numerator
+        return Fraction(new_numerator - other_new_numerator, nok) 
 
+    
     def __mul__(self, other):
         """
         Returns new Fraction, that's the product of self and other.
@@ -97,6 +98,7 @@ class Fraction:
         else:
             return a * b
 
+    
     def get_divider(a, b):
         num_list = []
         for num in range(2, min(abs(a), abs(b)) + 1):
@@ -156,4 +158,3 @@ print(e)  # 1/4
 print(e.simplify())  # 1/4
 print(e.is_simplified())  # True
 print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
-
