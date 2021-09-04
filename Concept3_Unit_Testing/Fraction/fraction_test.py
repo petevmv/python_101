@@ -41,6 +41,8 @@ class FractionTest(unittest.TestCase):
 
 	def test_lt(self):
 		self.assertTrue(Fraction(1, 2) < Fraction(3, 4))
+		self.assertEqual(sorted([Fraction(3, 4), Fraction(1, 2)]), 
+						[Fraction(1, 2), Fraction(3, 4)])
 
 
 	def test_simplyfy_produce_correct_result(self):
