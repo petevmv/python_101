@@ -29,10 +29,25 @@ class FractionTest(unittest.TestCase):
 	def test_add_sub_and_mul(self):
 		a = Fraction(1, 2)
 		b = Fraction(1, 2)
+		a_neg = Fraction(-1, 2)
+		b_neg = Fraction(-1, 2)
+		neg_denom = Fraction(1, -2)
 
+		self.assertEqual(neg_denom + neg_denom, Fraction(-2, 2))
+		self.assertEqual(neg_denom - neg_denom, Fraction(0, 2))
+		self.assertEqual(neg_denom * neg_denom, Fraction(1, 4))
+		
+		self.assertEqual(a + neg_denom, Fraction(0, 2))
+		self.assertEqual(a - neg_denom, Fraction(2, 2))
+		self.assertEqual(a * neg_denom, Fraction(-1, 4))
+		
 		self.assertEqual(a + b, Fraction(2, 2))	
 		self.assertEqual(a - b, Fraction(0, 2))
 		self.assertEqual(a * b, Fraction(1, 4))
+		
+		self.assertEqual(a_neg + b_neg, Fraction(-2, 2))
+		self.assertEqual(a_neg - b_neg, Fraction(0, 2))
+		self.assertEqual(a_neg * b_neg, Fraction(1, 4))
 	
 	def test_eq(self):
 		self.assertEqual(Fraction(1, 2), Fraction(1, 2))

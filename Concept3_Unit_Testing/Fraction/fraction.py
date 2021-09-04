@@ -7,6 +7,9 @@ class Fraction:
         """
         self.numerator = numerator
         self.denominator = denominator
+        if self.denominator < 0:
+            self.numerator = 0 - self.numerator
+            self.denominator = abs(self.denominator)
         if self.denominator == 0:
             raise ValueError('Cannot divide by zero')
         
@@ -158,3 +161,5 @@ print(e)  # 1/4
 print(e.simplify())  # 1/4
 print(e.is_simplified())  # True
 print(sorted([Fraction(5,6),Fraction(3,4), Fraction(1,2)]))
+
+print(Fraction(1, -2))
