@@ -53,17 +53,21 @@ class FractionTest(unittest.TestCase):
 		self.assertEqual(Fraction(1, 2), Fraction(1, 2))
 		self.assertNotEqual(Fraction(1, 2), Fraction(1, 61))
 		self.assertEqual(Fraction(1, 2), Fraction(1, 2).simplify())
+		self.assertEqual(Fraction(1, 2), Fraction(10, 20).simplify())
+		self.assertEqual(Fraction(-1, 2), Fraction(2, -4).simplify())
 
 	def test_lt(self):
 		self.assertTrue(Fraction(1, 2) < Fraction(3, 4))
-		self.assertEqual(sorted([Fraction(3, 4), Fraction(1, 2)]), 
-						[Fraction(1, 2), Fraction(3, 4)])
+		self.assertEqual(sorted([Fraction(3, 4), Fraction(1, 2), Fraction(-1, 2)]), 
+						[Fraction(-1, 2), Fraction(1, 2), Fraction(3, 4)])
+		self.assertFalse(Fraction(-1, 2) > Fraction(3, 4))
 
 
 	def test_simplyfy_produce_correct_result(self):
 		self.assertEqual(Fraction(10, 20).simplify(), Fraction(1, 2))
 		self.assertEqual(Fraction(4, 4).simplify(), Fraction(1, 1))
 		self.assertEqual(Fraction(1, 3).simplify(), Fraction(1, 3))
+		self.assertEqual(Fraction(10, -20).simplify(), Fraction(-1, 2))
 
 	def test_is_simplyfied_produce_correct_result(self):
 		self.assertFalse(Fraction(10, 20).is_simplified())
@@ -72,13 +76,16 @@ class FractionTest(unittest.TestCase):
 
 	def test_get_divider(self):
 		self.assertEqual(Fraction.get_divider(2, 4), 2)
+		self.assertEqual(Fraction.get_divider(6, 3), 3)
 		self.assertEqual(Fraction.get_divider(3, 5), 1)
+		self.assertEqual(Fraction.get_divider(-6, 3), 3)
 
 	def test_get_nok(self):
 		self.assertEqual(Fraction.get_nok(12, 18), 36)
 		self.assertEqual(Fraction.get_nok(6, 6), 6)
 		self.assertEqual(Fraction.get_nok(7, 8), 56)
 		self.assertEqual(Fraction.get_nok(6, 12), 12)
+		self.assertEqual(Fraction.get_nok(-12, 18), 36)
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ class Fraction:
         if self.denominator < 0:
             self.numerator = 0 - self.numerator
             self.denominator = abs(self.denominator)
-        if self.denominator == 0:
+        elif self.denominator == 0:
             raise ValueError('Cannot divide by zero')
         
         # elif type(self.numerator) != int or type(self.denominator) != int:
@@ -36,7 +36,6 @@ class Fraction:
         """
         if self.numerator == 0:
             return '0'
-        
         return f"{self.__class__.__name__}{self.numerator, self.denominator}"
 
 
@@ -46,7 +45,6 @@ class Fraction:
         """
         if self.numerator == other.numerator and self.denominator == other.denominator:
             return True
-        
         return False
           
 
