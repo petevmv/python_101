@@ -14,7 +14,8 @@ class TemplateEngine:
         pattern = r'({*{[ A-Za-z0-9_ ]+}*.})'
         found_result = re.findall(pattern, self.template)
         if len(found_result) != len(self.context.keys()):
-            raise TemplatEngineError
+            raise Exception('TemplatEngineError')
+        
         text = self.template
         values = [v for k,v in self.context.items()]        
         for idx, el in enumerate(found_result):
@@ -41,7 +42,7 @@ You can get your discount {{ here }}
 
 engine = TemplateEngine(template)
 rendered = engine.render(first_name='Ivan',
-    last_name='Ivanov', product='Python course', here='some_link')
+    last_name='Ivanov', product='Python course')
 print(rendered)
 var = engine.extract_variables()
 print(var)
