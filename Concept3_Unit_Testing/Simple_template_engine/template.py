@@ -14,8 +14,8 @@ class TemplateEngine:
         pattern = r'({*{[ A-Za-z0-9_ ]+}*.})'
         found_result = re.findall(pattern, self.template)
         if len(found_result) != len(self.context.keys()):
-            raise Exception('TemplatEngineError')
-        
+            raise TypeError('TemplatEngineError')
+
         text = self.template
         values = [v for k,v in self.context.items()]        
         for idx, el in enumerate(found_result):
@@ -26,9 +26,10 @@ class TemplateEngine:
         """
         Returns a list of all variables names, that are present in `self.template`
         """
-        keys = [k for k,v in self.context.items()]
-        return f"{keys}"
-
+        pattern = r'{{([ A-Za-z0-9_ ]+)}}'
+        found_result = re.findall(pattern, self.template)
+        return [x.strip() for x in found_result]
+        
 
 template = """
 Hello {{ first_name }} {{ last_name }},
@@ -42,7 +43,13 @@ You can get your discount {{ here }}
 
 engine = TemplateEngine(template)
 rendered = engine.render(first_name='Ivan',
-    last_name='Ivanov', product='Python course')
+    last_name='Ivanov', product='Python course', here='https:alabal')
 print(rendered)
 var = engine.extract_variables()
 print(var)
+other_template = "Hello there, {{ x }}"
+engine_new = TemplateEngine(other_template)
+rendered_new = engine_new.render(x='General Kenobi.')
+print(rendered_new)
+variables = engine_new.extract_variables()
+print(variables)
