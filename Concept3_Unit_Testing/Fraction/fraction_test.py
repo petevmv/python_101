@@ -18,14 +18,24 @@ class FractionTest(unittest.TestCase):
 
 
 	def test_string_repr_and_zero(self):
-		self.assertEqual(str(Fraction(1, 2)), '1/2')
-		self.assertEqual(repr(Fraction(1, 2)), 'Fraction(1, 2)')
+		cases = [
+			(str(Fraction(1, 2)), '1/2'),
+			(str(Fraction(1, 1)), '1/1'),
+			(str(Fraction(2, 1)), '2/1'),
+			(str(Fraction(2, 4)), '2/4'),
+			(str(Fraction(0, 2)), '0'),
+			(repr(Fraction(1, 2)), 'Fraction(1, 2)'),
+			(repr(Fraction(2, 1)), 'Fraction(2, 1)'),
+			(repr(Fraction(1, 1)), 'Fraction(1, 1)'),
+			(repr(Fraction(2, 4)), 'Fraction(2, 4)'),
+			(repr(Fraction(0, 2)), '0')
+		]
 		
-		self.assertEqual(str(Fraction(0, 1)), '0')
-		self.assertEqual(repr(Fraction(0, 1)), '0')
-
+		for obj, expected in cases:
+			with self.subTest(f'Expected: {expected}'):
+				self.assertEqual(obj, expected)
 		
-
+		
 	def test_add_sub_and_mul(self):
 		a = Fraction(1, 2)
 		b = Fraction(1, 2)
