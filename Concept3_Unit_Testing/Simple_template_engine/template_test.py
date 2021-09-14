@@ -6,16 +6,16 @@ class TestTemplateEngine(unittest.TestCase):
 	def test_render(self):
 		test_text = "x {{ x}}, y {{y }}, z {{ z }}"
 		test_obj = TemplateEngine(test_text)
+		
 		same_multy_vars = "x {{x}}, y {{x}}, z {{x}}"
 		same_vars_test_obj = TemplateEngine(same_multy_vars)
+		
 		random_whitespaces = 'py {{   x}}, md {{  x   }}, ka {{ x  }}, bl{{x      }}'
 		random_ws_test_obj = TemplateEngine(random_whitespaces)
 
 		with self.subTest('Type Error'):
 			with self.assertRaises(TypeError):
 				test_obj.render(x='jimmy')
-			with self.assertRaises(TypeError):
-				TemplateEngine('some_string').render(x='1')
 			with self.assertRaises(TypeError):
 				TemplateEngine('some_string').render(x=1)
 
