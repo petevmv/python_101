@@ -14,7 +14,7 @@ class TemplateEngine:
         self.context = context
         for k, v in self.context.items():
             if type(v) is int:
-                raise TypeError('end result is string object, int is given...')
+                raise TypeError('end result is string object, insted int is given...')
                 break
 
         pattern = r'({{[A-Za-z0-9_ ]+}})'
