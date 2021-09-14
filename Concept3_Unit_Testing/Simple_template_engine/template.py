@@ -22,13 +22,13 @@ class TemplateEngine:
         found_result = re.findall(pattern, self.template)
         found_result_no_brackets = re.findall(pattern_no_brackets, self.template)
         
-        for idx, el in enumerate(found_result_no_brackets):
+        for el in found_result_no_brackets:
             if el.strip() not in self.context:
                 raise TypeError('TemplatEngineError')
 
         text = self.template
         
-        for idx, el in enumerate(found_result):
+        for el in found_result:
             # ipdb.set_trace()
             for k, v in self.context.items():
                 if k in [x.strip() for x in re.findall(pattern_no_brackets, el)]:
