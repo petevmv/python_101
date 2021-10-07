@@ -61,19 +61,20 @@ We are currently running a promotion for {{ product }}.
 You can get your discount {{ here }}
 """
 
-# engine = TemplateEngine(template)
-# rendered = engine.render(first_name='Ivan',
-#     last_name='Ivanov', product='Python course', here='https:alabal')
-# print(rendered)
-# var = engine.extract_variables()
-# print(var)
-# other_template = "Hello there, {{ x }}"
-# engine_new = TemplateEngine(other_template)
-# rendered_new = engine_new.render(x='General Kenobi.')
-# print(rendered_new)
-# variables = engine_new.extract_variables()
-# print(variables)
+engine = TemplateEngine(template)
+rendered = engine.render(first_name='Ivan',
+    last_name='Ivanov', product='Python course', here='https:alabal')
+print(rendered)
+var = engine.extract_variables()
+print(var)
+other_template = "Hello there, {{ x }}"
+engine_new = TemplateEngine(other_template)
+rendered_new = engine_new.render(x='General Kenobi.')
+print(rendered_new)
+variables = engine_new.extract_variables()
+print(variables)
 a = TemplateEngine('x {{ x  }}, y {{x}}, z {{x}}')
  
 print(a.render(x='1'))
 print(a.extract_variables())
+
