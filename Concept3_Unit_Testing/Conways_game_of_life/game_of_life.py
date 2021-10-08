@@ -89,8 +89,23 @@ def get_neighbor(matrix):
 				matrix_copy = update_grid(idx_i, idx_j, number_of_live_neighbors, matrix_copy.copy())
 				number_of_live_neighbors = 0
 				continue
-					
-
+			# last row 
+			if (idx_i, idx_j) == (last_row, idx_j) and idx_j != 0 and idx_j != last_col:
+				if matrix[idx_i - 1][idx_j] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i - 1][idx_j - 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i - 1][idx_j + 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i][idx_j + 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i][idx_j - 1] == 1:
+					number_of_live_neighbors += 1
+				matrix_copy = update_grid(idx_i, idx_j, number_of_live_neighbors, matrix_copy.copy())
+				number_of_live_neighbors = 0
+				continue
+			# first col 
+			
 
 	print(matrix_copy)
 	# print(number_of_live_neighbors)
