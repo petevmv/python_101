@@ -105,7 +105,37 @@ def get_neighbor(matrix):
 				number_of_live_neighbors = 0
 				continue
 			# first col 
-			
+			if (idx_i, idx_j) == (idx_i, 0) and idx_i != 0 and idx_i != last_row:
+				if matrix[idx_i + 1][idx_j] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i - 1][idx_j] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i + 1][idx_j + 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i][idx_j + 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i - 1][idx_j + 1] == 1:
+					number_of_live_neighbors += 1
+				matrix_copy = update_grid(idx_i, idx_j, number_of_live_neighbors, matrix_copy.copy())
+				number_of_live_neighbors = 0
+				continue
+
+			# last col
+			if (idx_i, idx_j) == (idx_i, last_col) and idx_i != 0 and idx_i != last_row:
+				if matrix[idx_i- 1][idx_j] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i - 1][idx_j - 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i][idx_j - 1] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i + 1][idx_j] == 1:
+					number_of_live_neighbors += 1
+				if matrix[idx_i + 1][idx_j - 1] == 1:
+					number_of_live_neighbors += 1
+				matrix_copy = update_grid(idx_i, idx_j, number_of_live_neighbors, matrix_copy.copy())
+				number_of_live_neighbors = 0
+				continue
+
 
 	print(matrix_copy)
 	# print(number_of_live_neighbors)
