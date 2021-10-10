@@ -176,10 +176,9 @@ def run(matrix):
 	
 	# print(number_of_live_neighbors)
 			
-	
 
-universe = np.zeros((50, 50))
-# test = np.array([[0, 1, 0],[0,1,1],[1,0,1],[1,0,1]], dtype=np.uint8)
+
+# SEEDS
 beacon = [[1, 1, 0, 0],
 		  [1, 1, 0, 0],
 		  [0, 0, 1, 1],
@@ -198,28 +197,25 @@ acron = [[1,1,0,1,1,1],
 glider =[[0,0,1],
 		 [1,0,1],
 		 [0,1,1]]
-		 
-		 
-# a = np.random.randint(2, size=(4,4), dtype=np.uint8)
-# print(a)
-# print("______________________")
-# print(test[0])
+		  
+
+
+# PLANTING SEED
+universe = np.zeros((50, 50))
 
 # universe[15:20, 21:26] = R_pentomino
 # universe[0:3, 0:3] = glider
 # universe[1:6, 1:7] = glider
-universe[30: 33,30:36] = acron
-# print(test)
+universe[30: 33, 30:36] = acron
 
 
 fig = plt.figure()
 plt.axis('off')
 images = []
 
-
-
+number_of_generations = 30
 if __name__ == "__main__":
-	for i in range(30):
+	for i in range(number_of_generations):
 		# ipdb.set_trace()
 		images.append((plt.imshow(universe, cmap='binary'),))
 		universe = run(universe)
