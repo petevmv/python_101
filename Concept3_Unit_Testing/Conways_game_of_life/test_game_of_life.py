@@ -1,7 +1,7 @@
 import game_of_life
 import unittest
 import numpy as np
-
+import ipdb
 
 class Test_game_of_life(unittest.TestCase):
 	def test_run(self):
@@ -44,19 +44,20 @@ class Test_game_of_life(unittest.TestCase):
 	
 	def test_update_grid(self):
 		initial_input = np.array([[0, 1, 0],
-					 [0, 1, 1],
-					 [1, 0, 1],
-					 [1, 0, 1]])
+								  [0, 1, 1],
+								  [1, 0, 1],
+								  [1, 0, 1]])
 		
-		updated_grid = game_of_life.update_grid(1, 2, 3, initial_input)
-
-		expected = game_of_life.run(initial_input)[1][2]
+		spawn_live_cell_on_i_j = game_of_life.update_grid(0, 2, 3, initial_input)[0][2]
+		kill_cell_on_i_j = game_of_life.update_grid(3, 0, 1, initial_input)[3][0]
+		survival_cell_on_i_j = game_of_life.update_grid(0, 1, 2, initial_input)[0][1]
 		
-		self.assertEqual(updated_grid[1][1], expected)
-
-
-
-
+		dead_expected = 0
+		live_expected = 1
+				
+		self.assertEqual(spawn_live_cell_on_i_j, live_expected)
+		self.assertEqual(kill_cell_on_i_j, dead_expected)
+		self.assertEqual(survival_cell_on_i_j, live_expected)
 
 if __name__ == '__main__':
 	unittest.main()
