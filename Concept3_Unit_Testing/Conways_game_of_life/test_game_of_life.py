@@ -58,6 +58,7 @@ class Test_game_of_life(unittest.TestCase):
 		kill_cell_on_i_j = game_of_life.update_grid(3, 0, 1, initial_input)[3][0]
 		survival_cell_on_i_j = game_of_life.update_grid(0, 1, 2, initial_input)[0][1]
 		cell_with_no_neibhors = game_of_life.update_grid(0, 0, 0, initial_input)[0][0]
+		
 		dead_expected = 0
 		live_expected = 1
 				
@@ -65,5 +66,6 @@ class Test_game_of_life(unittest.TestCase):
 		self.assertEqual(kill_cell_on_i_j, dead_expected)
 		self.assertEqual(survival_cell_on_i_j, live_expected)
 		self.assertEqual(cell_with_no_neibhors, dead_expected)
+
 if __name__ == '__main__':
 	unittest.main()
