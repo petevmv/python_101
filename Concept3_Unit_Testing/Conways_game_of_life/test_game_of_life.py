@@ -43,8 +43,9 @@ class Test_game_of_life(unittest.TestCase):
 
 		
 		self.assertEqual(board.tolist(), expected.tolist())
-		self.assertEqual(game_of_life.run(expected).tolist(),
-							 expected_after_one_gen.tolist())
+		self.assertEqual(
+			game_of_life.run(expected).tolist(),
+		 	expected_after_one_gen.tolist())
 	
 	def test_update_grid(self):
 		initial_input = np.array(
