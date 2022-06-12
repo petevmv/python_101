@@ -6,4 +6,4 @@ def histogram(strin):
                 my_dict[ch] = 0
             my_dict[ch] = my_dict[ch] + 1
         return my_dict
-    raise Exception('Strings only')
+    raise TypeError('Strings only')

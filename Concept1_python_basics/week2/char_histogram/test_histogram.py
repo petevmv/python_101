@@ -38,7 +38,8 @@ class TestHistogram(unittest.TestCase):
         with self.subTest('Type Error'):
             with self.assertRaises(TypeError):
                 histogram(123)
-            
+            with self.assertRaises(TypeError):
+                histogram([1231])
 
 
 
