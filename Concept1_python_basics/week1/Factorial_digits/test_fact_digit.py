@@ -12,7 +12,10 @@ class TestFactorialDigit(unittest.TestCase):
 				fact_digits({})
 			with self.assertRaises(ValueError):
 				fact_digits((1, 2))
-
+		with self.subTest('Type Error'):
+			with self.assertRaises(TypeError):
+				fact_digits(1,2,3,4,5)
+			
 		with self.subTest('Testing fact_digit() behave as expected'):
 			self.assertEqual(fact_digits(1),1)
 			self.assertEqual(fact_digits(101), 3)
