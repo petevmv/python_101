@@ -13,6 +13,16 @@ class TestNaNExpand(unittest.TestCase):
 			for actual, expected in tests:
 				self.assertEqual(actual, expected)
 
+		with self.subTest('Type Error'):
+			with self.assertRaises(TypeError):
+				nan_expand('abc')
+			with self.assertRaises(TypeError):
+				nan_expand([])
+			with self.assertRaises(TypeError):
+				nan_expand({})
+			with self.assertRaises(TypeError):
+				nan_expand((1,2))
+
 
 if __name__ == "__main__":
 	unittest.main()
