@@ -17,6 +17,8 @@ class TestSumMatrix(unittest.TestCase):
 				sum_matrix()
 			with self.assertRaises(TypeError):
 				sum_matrix([1,2,3],[1,2,3])
+			with self.assertRaises(TypeError):
+				sum_matrix("abc")
 
 
 if __name__ == "__main__":
