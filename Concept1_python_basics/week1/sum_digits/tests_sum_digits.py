@@ -3,11 +3,15 @@ from sum_digits import sum_digits
 
 class TestSumDigits(unittest.TestCase):
 	def test_sum_digits(self):
+		test_eq = [
+					(sum_digits(1325132435356), 43),
+					(sum_digits(123), 6),
+					(sum_digits(6), 6),
+					(sum_digits(-1), 1)
+				]
 		with self.subTest('Testing proper behaivior of sum_digits()'):
-			self.assertEqual(sum_digits(1325132435356), 43)
-			self.assertEqual(sum_digits(123), 6)
-			self.assertEqual(sum_digits(6), 6)
-			self.assertEqual(sum_digits(-1), 1)
+			for actual, expected in test_eq:
+				self.assertEqual(actual, expected)
 			self.assertNotEqual(sum_digits(1325132435356), 44)
 			self.assertNotEqual(sum_digits(123), 5)
 		
