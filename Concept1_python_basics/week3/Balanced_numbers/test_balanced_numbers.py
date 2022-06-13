@@ -19,6 +19,15 @@ class TestBalancedNumbers(unittest.TestCase):
 				self.assertTrue(i)
 			for i in tests_false:
 				self.assertFalse(i)
-				
+		
+		with self.subTest("Value Error"):
+			with self.assertRaises(ValueError):
+				is_number_balanced([])
+			with self.assertRaises(ValueError):
+				is_number_balanced({})
+			with self.assertRaises(ValueError):
+				is_number_balanced((1, 2))
+			with self.assertRaises(ValueError):
+				is_number_balanced('abc')
 if __name__ == '__main__':
 	unittest.main()
