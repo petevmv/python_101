@@ -14,6 +14,7 @@ class TestBalancedNumbers(unittest.TestCase):
 				is_number_balanced(1234567),
 				is_number_balanced(234563498573)				
 				]	 
+		
 		with self.subTest('Testing proper function behaivour'):
 			for i in tests_true:
 				self.assertTrue(i)
@@ -29,5 +30,7 @@ class TestBalancedNumbers(unittest.TestCase):
 				is_number_balanced((1, 2))
 			with self.assertRaises(ValueError):
 				is_number_balanced('abc')
+			with self.assertRaises(ValueError):
+				is_number_balanced(1231.3)
 if __name__ == '__main__':
 	unittest.main()
