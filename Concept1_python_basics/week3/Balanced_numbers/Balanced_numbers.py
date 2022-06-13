@@ -2,7 +2,8 @@ def is_number_balanced(number):
     number = str(number)
     Leftsum = 0
     Rightsum = 0
-    for i in range(0, int(len(number) / 2)):
+    middle = len(number) // 2
+    for i in range(0, middle):
         Leftsum = Leftsum + int(number[i])
         Rightsum = (Rightsum + int(number[len(number) - 1 - i]))
     if (Leftsum == Rightsum):
@@ -12,4 +13,7 @@ def is_number_balanced(number):
         print("Not Balanced", end = '\n')
         return False
 
-is_number_balanced(1238033) is True
+# is_number_balanced(9) is True
+# is_number_balanced(4518) is True
+# is_number_balanced(28471) is False
+# is_number_balanced(1238033) is True
