@@ -22,7 +22,10 @@ class TestNaNExpand(unittest.TestCase):
 				nan_expand({})
 			with self.assertRaises(TypeError):
 				nan_expand((1,2))
-
+			with self.assertRaises(TypeError):
+				nan_expand('123')
+			with self.assertRaises(TypeError):
+				nan_expand(0.5)
 
 if __name__ == "__main__":
 	unittest.main()
