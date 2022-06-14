@@ -12,6 +12,12 @@ class TestGroup(unittest.TestCase):
 		with self.subTest('Test Group behaivior'):
 			for actual, expected in test_cases:
 				self.assertEqual(actual, expected)
+		
+		with self.subTest('Type Error'):
+			with self.assertRaises(TypeError):
+				group(1,2,3,4,5)
+			
+
 
 if __name__ == '__main__':
 	unittest.main()
