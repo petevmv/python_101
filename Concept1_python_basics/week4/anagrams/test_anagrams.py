@@ -21,5 +21,14 @@ class TestAnagram(unittest.TestCase):
 			for word1, word2 in tests_false:
 				self.assertFalse(anagrams(word1, word2))
 
+		with self.subTest('Attribute Error'):
+			with self.assertRaises(AttributeError):
+				anagrams(1,2)
+			with self.assertRaises(AttributeError):
+				anagrams([],1)
+		with self.subTest('Type Error'):		
+			with self.assertRaises(TypeError):
+				anagrams('alabala')
+
 if __name__ == '__main__':
 	unittest.main()
