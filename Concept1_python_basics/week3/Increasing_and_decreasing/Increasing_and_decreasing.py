@@ -12,9 +12,9 @@ def increasing_or_decreasing(nl):
         return Monotonicity.NONE
 
     series_obj = pd.Series(nl)
-
+    # using pandas build in functions for monotonicy and unique elements
     if series_obj.is_monotonic_increasing and series_obj.is_unique == True:
-        print("incresing")
+        print("incresing", Monotonicity.INCREASING)
         return Monotonicity.INCREASING
     elif series_obj.is_monotonic_decreasing and series_obj.is_unique == True:
         print('decreseing')
@@ -22,3 +22,5 @@ def increasing_or_decreasing(nl):
     else:
         print('NONE')
         return Monotonicity.NONE
+
+
