@@ -24,8 +24,22 @@ class TestCreaditCardValidation(unittest.TestCase):
 				self.assertTrue(is_credit_card_valid(actual))
 			for actual, expected in tests_invalid:
 				self.assertFalse(is_credit_card_valid(actual))
-
-# (79927398715) is False
+	def test_sum_of_digits(self):
+		cases = [
+					(1, 2),
+					(2, 4),
+					(3, 6),
+					(4, 8),
+					(5, 1),
+					(6, 3),
+					(7, 5),
+					(8, 7),
+					(9, 9)
+				]
+		with self.subTest("Test proper behaviour of sum_of_digits"):
+			for actual, expected in cases:
+				self.assertEqual(sum_of_digits(actual), expected)
+	# (79927398715) is False
 
 if __name__ == '__main__':
 	unittest.main()
