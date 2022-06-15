@@ -15,6 +15,16 @@ class TestPalindromeCount(unittest.TestCase):
 			for actual, expected in tests:
 				self.assertEqual(palindromes_count(actual), expected)
 
+		with self.subTest('Type Error'):
+			with self.assertRaises(TypeError):
+				palindromes_count('abc')
+			with self.assertRaises(TypeError):
+				palindromes_count([])
+			with self.assertRaises(TypeError):
+				palindromes_count({})
+			with self.assertRaises(TypeError):
+				palindromes_count((1,2))
+
 
 if __name__ == '__main__':
 	unittest.main()
