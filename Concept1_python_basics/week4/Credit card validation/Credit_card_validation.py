@@ -20,4 +20,9 @@ def is_credit_card_valid(number):
         return False
 
 
-print(is_credit_card_valid(79927398715))
+# is_credit_card_valid(79927398713) is True
+# is_credit_card_valid(31789372997) is True
+# is_credit_card_valid(79927398715) is False
+# is_credit_card_valid(4417123456789113) is True  
+# is_credit_card_valid(4000002500003155) is True
+# is_credit_card_valid(4000002760003184) is True
