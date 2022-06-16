@@ -3,6 +3,9 @@ def gas_stations(distance, tank_size, stations):
     travaled_distance = tank_size
     
     for idx, station in enumerate(stations):
+        
+        if distance < stations[-1]:
+            stations.remove(stations[-1])
 
         if travaled_distance > station:
             continue
@@ -14,7 +17,7 @@ def gas_stations(distance, tank_size, stations):
         result.append(stations[-1])
 
 
-    print(result)    
+    print(result, travaled_distance)    
     return result
 print(gas_stations(320, 90, [50, 80, 140, 180, 220, 290]) == [80, 140, 220, 290])
 print(gas_stations(390, 80, [70, 90, 140, 210, 240, 280, 350]) == [70, 140, 210, 280, 350])
