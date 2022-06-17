@@ -40,4 +40,4 @@ def goldbach(n):
     print(res)
     return res
 
-goldbach(40)
+
