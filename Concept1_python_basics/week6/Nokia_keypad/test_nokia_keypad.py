@@ -25,9 +25,9 @@ class TestNokiaKeypad(unittest.TestCase):
 			'Ivo e Panda'
 		)
 		]	
-
-		for pressed_input, expected in tests_for_numbers_to_msg:
-			self.assertEqual(numbers_to_message(pressed_input), expected)
+		with self.subTest('Testing proper behaviour of numbers_to_message()'):
+			for pressed_input, expected in tests_for_numbers_to_msg:
+				self.assertEqual(numbers_to_message(pressed_input), expected)
 
 
 
@@ -50,9 +50,10 @@ class TestNokiaKeypad(unittest.TestCase):
 			[2]
 		)
 		]
-
-		for message, expected in test_for_msg_to_numbers:
-			self.assertEqual(message_to_numbers(message), expected)
+		
+		with self.subTest('Testing proper behaviour of message_to_numbers()'):
+			for message, expected in test_for_msg_to_numbers:
+				self.assertEqual(message_to_numbers(message), expected)
 
 
 
