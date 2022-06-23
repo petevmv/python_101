@@ -19,6 +19,35 @@ class TestStrangerForm(unittest.TestCase):
 				self.assertTrue(outside_of_bounds((2, 0), matrix))
 				self.assertTrue(outside_of_bounds((2, 4), matrix))
 
+	def test_build_friends_relative_position(self):
+		test = [(
+				["A", "BAA", "FRA", "CAB", "DRC", "EAD", "GLE"],
+				{
+				'A':(0, 0), 
+				'B':(-1, 0), 
+				'C':(-2, 0), 
+				'D':(-2, 1),
+				'E':(-3, 1), 
+				"F":(0, 1),
+				"G":(-3,0)
+				}
+				),
+				(
+				['A', 'BBA', "FLA", "CBB",'DLC', 'EBD','GRE'],
+				
+				{
+				'A': (0, 0),
+				'B': (1, 0),
+				'C': (2, 0),
+				'D': (2, -1),
+				'E': (3, -1),
+				'F': (0, -1),
+				'G': (3, 0)
+				}
+				)]
+		with self.subTest('Testing build_friends_relative_position()'):
+			for configuration, expected in test:
+				self.assertEqual(build_friends_relative_position(configuration), expected)
 
 if __name__ == '__main__':
 	unittest.main()
