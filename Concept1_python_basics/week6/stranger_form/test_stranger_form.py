@@ -49,5 +49,45 @@ class TestStrangerForm(unittest.TestCase):
 			for configuration, expected in test:
 				self.assertEqual(build_friends_relative_position(configuration), expected)
 
+	def test_in_cinema(self):
+		points_in = [(0, 0),
+				 	 (0, 1),
+				 	 (0, 3),
+					 (0, 4),
+					 (0, 5),
+					 (0, 7),
+					 (4, 0),
+					 (9, 3)]
+	 	
+		points_out = [(0, 2),
+ 					  (0, 6),
+					  (0, 8),
+					  (0, 9),
+					  (2, 0),
+					  (2, 9),
+					  (2, 11),
+					  (3, 10),
+					  (9, 0)]
+
+		cinema_layout = [
+						'..*...*.**',
+						'.....**...',
+						'*.*...*..*',
+						'.**....*.*',
+						'...*..*.*.',
+						'.***...*..',
+						'*......*.*',
+						'.....**..*',
+						'..*.*.*..*',
+						'***.*.**..'
+						]
+    	
+
+		with self.subTest('Testing in_cinema'):
+			for point in points_in:
+				self.assertTrue(in_cinema(point, cinema_layout))
+			for point in points_out:
+				self.assertFalse(in_cinema(point, cinema_layout))
+
 if __name__ == '__main__':
 	unittest.main()
