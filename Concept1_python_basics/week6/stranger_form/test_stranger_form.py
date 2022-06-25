@@ -104,5 +104,42 @@ class TestStrangerForm(unittest.TestCase):
 			for point1, point2, expected in tests:
 				self.assertEqual(add_point(point1, point2), expected)
 
+	def test_build_layout(self):
+		cinema_layout = [
+						'..*...*.**',
+						'.....**...',
+						'*.*...*..*',
+						'.**....*.*',
+						'...*..*.*.',
+						'.***...*..',
+						'*......*.*',
+						'.....**..*',
+						'..*.*.*..*',
+						'***.*.**..'
+						]
+		
+		friends_configuration =	 {'A': (3, 3), 
+								  'B': (2, 3), 
+								  'F': (3, 4), 
+								  'C': (1, 3), 
+								  'D': (1, 4), 
+								  'E': (0, 4), 
+								  'G': (0, 3)}
+		
+		expected = ['..*GE.*.**',
+					'...CD**...',
+					'*.*B..*..*',
+					'.**AF..*.*',
+					'...*..*.*.',
+					'.***...*..',
+					'*......*.*',
+					'.....**..*',
+					'..*.*.*..*',
+					'***.*.**..']
+		
+		with self.subTest('Testing build layout'):
+			self.assertEqual(build_layout(friends_configuration, cinema_layout), expected)
+
+
 if __name__ == '__main__':
 	unittest.main()
