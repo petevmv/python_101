@@ -10,14 +10,21 @@ class TestFactorialDigit(unittest.TestCase):
 					  (145, 145),
 					  (999, 1088640)
 			    	  ]
+
+		cases_not_equal = [ 
+					      (111, 2),
+					      (111, 1),
+					      (145, 144),
+					      (999, 999)
+				       	  ]	    	  
+
 		for fact_input, expected in cases_equal:
 			with self.subTest(f'Expected: {expected}'):
 				self.assertEqual(fact_digits(fact_input), expected)
 			
-			# self.assertNotEqual(fact_digits(101), 2)
-			# self.assertNotEqual(fact_digits(111), 1)
-			# self.assertNotEqual(fact_digits(145), 144)
-			# self.assertNotEqual(fact_digits(999), 999)
+		for fact_input, expected in cases_not_equal:
+			with self.subTest(f'Expected not equal:{expected}'):
+				self.assertNotEqual(fact_digits(fact_input), expected)
 
 if __name__ == '__main__':
 	unittest.main()
