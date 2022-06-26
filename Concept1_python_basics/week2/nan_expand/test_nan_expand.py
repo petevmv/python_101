@@ -11,7 +11,7 @@ class TestNaNExpand(unittest.TestCase):
 				]
 		
 		for actual, expected in tests:
-			with self.subTest("Expected: {expected}"):
+			with self.subTest(f"Expected: {expected}"):
 				self.assertEqual(actual, expected)
 
 
