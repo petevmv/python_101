@@ -9,23 +9,11 @@ class TestNaNExpand(unittest.TestCase):
 				(nan_expand(2) , "Not a Not a NaN"),
 				(nan_expand(3) , "Not a Not a Not a NaN")
 				]
-		with self.subTest("Test NaN_expand behaive as expected"):
-			for actual, expected in tests:
+		
+		for actual, expected in tests:
+			with self.subTest("Expected: {expected}"):
 				self.assertEqual(actual, expected)
 
-		with self.subTest('Type Error'):
-			with self.assertRaises(TypeError):
-				nan_expand('abc')
-			with self.assertRaises(TypeError):
-				nan_expand([])
-			with self.assertRaises(TypeError):
-				nan_expand({})
-			with self.assertRaises(TypeError):
-				nan_expand((1,2))
-			with self.assertRaises(TypeError):
-				nan_expand('123')
-			with self.assertRaises(TypeError):
-				nan_expand(0.5)
 
 if __name__ == "__main__":
 	unittest.main()
