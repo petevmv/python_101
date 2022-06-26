@@ -10,7 +10,7 @@ class TestSumMatrix(unittest.TestCase):
 				  	([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]], 55)
 				]
 		for actual, expected in test_eq:
-			with self.subTest('Expected: {expected}'):
+			with self.subTest(f'Expected: {expected}'):
 				self.assertEqual(sum_matrix(actual), expected)
 
 if __name__ == "__main__":
