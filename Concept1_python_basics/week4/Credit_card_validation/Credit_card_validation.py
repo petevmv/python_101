@@ -16,7 +16,7 @@ def is_credit_card_valid(number):
         print("valid")
         return True
     else:
-        print("not valid")
+        print("invalid")
         return False
 
 
