@@ -9,26 +9,10 @@ class TestSumDigits(unittest.TestCase):
 					(sum_digits(6), 6),
 					(sum_digits(-1), 1)
 				]
-		with self.subTest('Testing proper behaivior of sum_digits()'):
-			for actual, expected in test_eq:
+		for actual, expected in test_eq:
+			with self.subTest('Expected: {expected}'):
 				self.assertEqual(actual, expected)
-			self.assertNotEqual(sum_digits(1325132435356), 44)
-			self.assertNotEqual(sum_digits(123), 5)
-		
-		with self.subTest('Type Error'):
-			with self.assertRaises(TypeError):
-				sum_digits(1,2,3,4,5,6)
-			with self.assertRaises(TypeError):
-				sum_digits([1,2,3,4,5,6])
-			with self.assertRaises(TypeError):
-				sum_digits({})
-			with self.assertRaises(TypeError):
-				sum_digits((1,2))
-			with self.assertRaises(TypeError):
-				sum_digits()
-			with self.assertRaises(TypeError):
-				sum_digits('abc')
-
+	
 
 if __name__ == "__main__":
 	unittest.main()
