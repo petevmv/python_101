@@ -51,7 +51,7 @@ class TestIncreasingAndDecreasing(unittest.TestCase):
 		]
 
 		for actual, expected in tests:
-			with self.subTest('Expected: {expected}'):
+			with self.subTest(f'Expected: {expected}'):
 				self.assertEqual(increasing_or_decreasing(actual), expected)
 
 if __name__ == '__main__':
