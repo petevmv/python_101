@@ -32,17 +32,10 @@ class TestHistogram(unittest.TestCase):
                 'a': 1
             })]
 
-        with self.subTest('Test proper behaiviour of histogram()'):
-            for actual, expected in tests:
+        for actual, expected in tests:
+            with self.subTest(f'Expected: {expected}'):
                 self.assertEqual(actual, expected)
-        with self.subTest('Type Error'):
-            with self.assertRaises(TypeError):
-                histogram(123)
-            with self.assertRaises(TypeError):
-                histogram([1231])
-
-
-
+       
 if __name__ == '__main__':
     unittest.main()
 

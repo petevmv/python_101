@@ -10,7 +10,7 @@ class TestSumDigits(unittest.TestCase):
 					(sum_digits(-1), 1)
 				]
 		for actual, expected in test_eq:
-			with self.subTest('Expected: {expected}'):
+			with self.subTest(f'Expected: {expected}'):
 				self.assertEqual(actual, expected)
 	
 
