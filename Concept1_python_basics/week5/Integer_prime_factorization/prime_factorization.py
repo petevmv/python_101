@@ -35,12 +35,12 @@ def prime_factorization(n):
     for i in range(2, n + 1):
         if is_it_prime(i) == True:
             simple_primes.append(i)
-    print("Simple primes", simple_primes)
+    # print("Simple primes", simple_primes)
     for i in simple_primes:
         while temp % i == 0:
             temp = temp // i
             prime_factor_base.append(i)
-    print('prime factor base', prime_factor_base)
+    # print('prime factor base', prime_factor_base)
     for num in prime_factor_base:
         if num not in prime_power:
             prime_power[num] = 0
@@ -48,7 +48,7 @@ def prime_factorization(n):
 
     for key, value in prime_power.items():
         result_as_tupples.append((key, value))
-    print(result_as_tupples)
+    # print(result_as_tupples)
     return result_as_tupples
 
 # prime_factorization(356)
