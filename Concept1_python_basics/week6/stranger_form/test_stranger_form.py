@@ -20,7 +20,8 @@ class TestStrangerForm(unittest.TestCase):
 				self.assertTrue(outside_of_bounds((2, 4), matrix))
 
 	def test_build_friends_relative_position(self):
-		test = [(
+		test = [
+			(
 				["A", "BAA", "FRA", "CAB", "DRC", "EAD", "GLE"],
 				{'A':(0, 0), 
 				 'B':(-1, 0), 
@@ -42,9 +43,8 @@ class TestStrangerForm(unittest.TestCase):
 			)
 		]
 		
-
-		with self.subTest('Testing build_friends_relative_position()'):
-			for configuration, expected in test:
+		for configuration, expected in test:
+			with self.subTest(f'Expected : {expected}'):
 				self.assertEqual(build_friends_relative_position(configuration), expected)
 
 	
@@ -92,16 +92,30 @@ class TestStrangerForm(unittest.TestCase):
 
 
 	def test_add_point(self):
-		tests = [((0, 0), (0, 1), (0, 1)),
-				((1, 1), (0, 0), (1, 1)),
-				((1, 1), (1, 1), (2, 2)),
-				((1, 5), (3, 8), (4, 13)),
-				((-1, 3), (1, -3), (0, 0)),
-				((-1, -3), (-1, -3),(-2, -6))]
+		tests = [
+			(
+				(0, 0), (0, 1), (0, 1)
+			),
+			(
+				(1, 1), (0, 0), (1, 1)
+			),
+			(
+				(1, 1), (1, 1), (2, 2)
+			),
+			(
+				(1, 5), (3, 8), (4, 13)
+			),
+			(
+				(-1, 3), (1, -3), (0, 0)
+			),
+			(
+				(-1, -3), (-1, -3),(-2, -6)
+			)
+		]
 		
 
-		with self.subTest('Testing add_point'):
-			for point1, point2, expected in tests:
+		for point1, point2, expected in tests:
+			with self.subTest('Expected : {expected}'):
 				self.assertEqual(add_point(point1, point2), expected)
 
 	def test_build_layout(self):
