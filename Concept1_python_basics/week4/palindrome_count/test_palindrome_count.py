@@ -11,19 +11,9 @@ class TestPalindromeCount(unittest.TestCase):
 				(99999, 1089)
 				]
 
-		with self.subTest("Testing proper behaiviour"):
-			for actual, expected in tests:
+		for actual, expected in tests:
+			with self.subTest(f"Expected: {expected}"):
 				self.assertEqual(palindromes_count(actual), expected)
-
-		with self.subTest('Type Error'):
-			with self.assertRaises(TypeError):
-				palindromes_count('abc')
-			with self.assertRaises(TypeError):
-				palindromes_count([])
-			with self.assertRaises(TypeError):
-				palindromes_count({})
-			with self.assertRaises(TypeError):
-				palindromes_count((1,2))
 
 
 if __name__ == '__main__':
