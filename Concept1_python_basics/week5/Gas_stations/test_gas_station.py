@@ -11,8 +11,8 @@ class TestGasStation(unittest.TestCase):
 			(gas_stations(150, 40, [30, 40, 80, 90, 130]), [])
 		]
 
-		with self.subTest("Checing proper function behaivour"):
-			for actual, expected in test_cases:
+		for actual, expected in test_cases:
+			with self.subTest(f"Expected : {expected}"):	
 				self.assertEqual(actual, expected)
 
 
