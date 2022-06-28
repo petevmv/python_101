@@ -115,7 +115,7 @@ class TestStrangerForm(unittest.TestCase):
 		
 
 		for point1, point2, expected in tests:
-			with self.subTest('Expected : {expected}'):
+			with self.subTest(f'Expected : {expected}'):
 				self.assertEqual(add_point(point1, point2), expected)
 
 	def test_build_layout(self):
